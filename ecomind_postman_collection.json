@@ -1,0 +1,624 @@
+{
+  "info": {
+    "name": "EcoMind API",
+    "description": "API collection for EcoMind Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test1@example.com\",\n  \"password\": \"password123\",\n  \"name\": \"Test User 1\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.token) {",
+                  "    pm.collectionVariables.set(\"token\", jsonData.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test1@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gamification - Friends",
+      "item": [
+        {
+          "name": "Send Friend Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"receiverId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/gamification/friends/request",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "friends",
+                "request"
+              ]
+            }
+          }
+        },
+        {
+          "name": "View Pending Requests",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/friends/requests",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "friends",
+                "requests"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Accept Friend Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/friends/accept/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "friends",
+                "accept",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Reject Friend Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/friends/reject/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "friends",
+                "reject",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Friends",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/friends",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "friends"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gamification - Groups",
+      "item": [
+        {
+          "name": "Create Group",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Eco Warriors\",\n  \"description\": \"Group for eco lovers\",\n  \"type\": \"public\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/gamification/groups",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "groups"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List My Groups",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/groups",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "groups"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Join Group",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/groups/1/join",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "groups",
+                "1",
+                "join"
+              ]
+            }
+          }
+        },
+        {
+          "name": "View Group Join Requests (Admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/groups/1/requests",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "groups",
+                "1",
+                "requests"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Accept Group Request (Admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/groups/requests/1/accept",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "groups",
+                "requests",
+                "1",
+                "accept"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Reject Group Request (Admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/gamification/groups/requests/1/reject",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "gamification",
+                "groups",
+                "requests",
+                "1",
+                "reject"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leaderboard",
+      "item": [
+        {
+          "name": "Friends Leaderboard",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/leaderboard/friends",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "leaderboard",
+                "friends"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Group Leaderboard",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/leaderboard/groups/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "leaderboard",
+                "groups",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Challenges",
+      "item": [
+        {
+          "name": "Get Available Challenges",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/challenges",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "challenges"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Accept Challenge (Standard)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"challengeId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/challenges/accept",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "challenges",
+                "accept"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Accept Challenge (Custom Frontend)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Use a reusable water bottle today\",\n  \"description\": \"Save plastic by bringing your own bottle\",\n  \"points\": 15\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/challenges/accept",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "challenges",
+                "accept"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Complete Challenge",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/challenges/1/complete",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "challenges",
+                "1",
+                "complete"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
