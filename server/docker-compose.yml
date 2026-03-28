@@ -12,6 +12,11 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ecomind"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   api:
     build: .
@@ -20,10 +25,12 @@ services:
     environment:
       - DATABASE_URL=postgresql://ecomind:ecomindpassword@db:5432/ecomind?schema=public
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - .:/app
       - /app/node_modules
+    command: sh -c "npx prisma db push --accept-data-loss && npm start"
 
 volumes:
   postgres_data:
