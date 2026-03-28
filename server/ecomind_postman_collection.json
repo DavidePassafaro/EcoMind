@@ -36,13 +36,8 @@
             },
             "url": {
               "raw": "{{base_url}}/auth/register",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "auth",
-                "register"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["auth", "register"]
             }
           }
         },
@@ -76,12 +71,40 @@
             },
             "url": {
               "raw": "{{base_url}}/auth/login",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "auth",
-                "login"
+              "host": ["{{base_url}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Friends",
+      "item": [
+        {
+          "name": "Search Users",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/friends/search?q=test",
+              "host": ["{{base_url}}"],
+              "path": ["friends", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "test"
+                }
               ]
             }
           }
@@ -117,14 +140,8 @@
             },
             "url": {
               "raw": "{{base_url}}/gamification/friends/request",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "friends",
-                "request"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "friends", "request"]
             }
           }
         },
@@ -145,14 +162,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/friends/requests",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "friends",
-                "requests"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "friends", "requests"]
             }
           }
         },
@@ -173,15 +184,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/friends/accept/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "friends",
-                "accept",
-                "1"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "friends", "accept", "1"]
             }
           }
         },
@@ -202,15 +206,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/friends/reject/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "friends",
-                "reject",
-                "1"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "friends", "reject", "1"]
             }
           }
         },
@@ -231,13 +228,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/friends",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "friends"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "friends"]
             }
           }
         }
@@ -272,13 +264,8 @@
             },
             "url": {
               "raw": "{{base_url}}/gamification/groups",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "groups"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "groups"]
             }
           }
         },
@@ -299,13 +286,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/groups",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "groups"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "groups"]
             }
           }
         },
@@ -326,15 +308,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/groups/1/join",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "groups",
-                "1",
-                "join"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "groups", "1", "join"]
             }
           }
         },
@@ -355,15 +330,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/groups/1/requests",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "groups",
-                "1",
-                "requests"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "groups", "1", "requests"]
             }
           }
         },
@@ -384,16 +352,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/groups/requests/1/accept",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "groups",
-                "requests",
-                "1",
-                "accept"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "groups", "requests", "1", "accept"]
             }
           }
         },
@@ -414,16 +374,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/gamification/groups/requests/1/reject",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "gamification",
-                "groups",
-                "requests",
-                "1",
-                "reject"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["gamification", "groups", "requests", "1", "reject"]
             }
           }
         }
@@ -449,13 +401,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/leaderboard/friends",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "leaderboard",
-                "friends"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["leaderboard", "friends"]
             }
           }
         },
@@ -476,14 +423,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/leaderboard/groups/1",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "leaderboard",
-                "groups",
-                "1"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["leaderboard", "groups", "1"]
             }
           }
         }
@@ -509,12 +450,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/challenges",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "challenges"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["challenges"]
             }
           }
         },
@@ -544,13 +481,8 @@
             },
             "url": {
               "raw": "{{base_url}}/challenges/accept",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "challenges",
-                "accept"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["challenges", "accept"]
             }
           }
         },
@@ -580,13 +512,8 @@
             },
             "url": {
               "raw": "{{base_url}}/challenges/accept",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "challenges",
-                "accept"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["challenges", "accept"]
             }
           }
         },
@@ -607,14 +534,8 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/challenges/1/complete",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "challenges",
-                "1",
-                "complete"
-              ]
+              "host": ["{{base_url}}"],
+              "path": ["challenges", "1", "complete"]
             }
           }
         }
