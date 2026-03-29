@@ -13,13 +13,15 @@ app.use(express_1.default.json());
 const gamification_1 = __importDefault(require("./routes/gamification"));
 const leaderboard_1 = __importDefault(require("./routes/leaderboard"));
 const challenges_1 = __importDefault(require("./routes/challenges"));
-app.use('/api/auth', auth_1.default);
-app.use('/api/gamification', gamification_1.default);
-app.use('/api/leaderboard', leaderboard_1.default);
-app.use('/api/challenges', challenges_1.default);
-app.get('/health', (req, res) => {
-    res.json({ status: 'ok' });
+const friends_1 = __importDefault(require("./routes/friends"));
+app.use("/api/auth", auth_1.default);
+app.use("/api/gamification", gamification_1.default);
+app.use("/api/leaderboard", leaderboard_1.default);
+app.use("/api/challenges", challenges_1.default);
+app.use("/api/friends", friends_1.default);
+app.get("/health", (req, res) => {
+    res.json({ status: "ok" });
 });
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server is running on port ${PORT} (exposed to local network)`);
 });
