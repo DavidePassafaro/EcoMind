@@ -1,10 +1,13 @@
 import { Router, Response } from 'express';
 import { authenticateToken, AuthRequest } from '../middlewares/auth.middleware';
 import prisma from '../prisma';
+import { addChallenge } from '../controllers/challenges.controller';
 
 const router = Router();
 
 router.use(authenticateToken);
+
+router.post('/', addChallenge);
 
 // Get available daily challenges
 router.get('/', async (req: AuthRequest, res: Response) => {

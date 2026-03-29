@@ -434,6 +434,37 @@
       "name": "Challenges",
       "item": [
         {
+          "name": "Add New Challenge",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Reduce plastic usage\",\n  \"description\": \"Avoid single-use plastics for a day\",\n  \"points\": 20,\n  \"source\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/challenges",
+              "host": ["{{base_url}}"],
+              "path": ["challenges"]
+            }
+          }
+        },
+        {
           "name": "Get Available Challenges",
           "request": {
             "auth": {
@@ -452,90 +483,6 @@
               "raw": "{{base_url}}/challenges",
               "host": ["{{base_url}}"],
               "path": ["challenges"]
-            }
-          }
-        },
-        {
-          "name": "Accept Challenge (Standard)",
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{token}}",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"challengeId\": 1\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/challenges/accept",
-              "host": ["{{base_url}}"],
-              "path": ["challenges", "accept"]
-            }
-          }
-        },
-        {
-          "name": "Accept Challenge (Custom Frontend)",
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{token}}",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Use a reusable water bottle today\",\n  \"description\": \"Save plastic by bringing your own bottle\",\n  \"points\": 15\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/challenges/accept",
-              "host": ["{{base_url}}"],
-              "path": ["challenges", "accept"]
-            }
-          }
-        },
-        {
-          "name": "Complete Challenge",
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{token}}",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/challenges/1/complete",
-              "host": ["{{base_url}}"],
-              "path": ["challenges", "1", "complete"]
             }
           }
         }
